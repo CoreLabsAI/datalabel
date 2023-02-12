@@ -17,10 +17,12 @@ pip install datalabel
 Once datalabel is installed, you can start using it right away. Simply import datalabel in your script and use the edit function to open the UI-based editor.
 
 ```
+import pandas as pd
 import datalabel
 
+
 texts = ['hi', 'hello', 'this is test data to label']
-datalabel.label(texts)
+df_labeled = datalabel.label(texts)
 ```
 
 The editor will open in a new window, allowing you to easily edit your data. You can add tags, write strings, and toggle true and false on rows, and datalabel will handle the rest. When you're finished, simply click submit in the top right corner, close the window, and your labels will be saved to a dataframe.
