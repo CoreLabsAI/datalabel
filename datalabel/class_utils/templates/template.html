@@ -1,0 +1,427 @@
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+
+<style>
+  .message {
+  display: flex;
+  align-items: flex-start;
+  margin: 20px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 27px;
+  line-height: 1.5;
+
+}
+
+.round {
+  width: 500px;
+  height: 35px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.left-container {
+  width: 80%;
+}
+
+.right-container {
+  width: 10%;
+  text-align: right;
+}
+.labels{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin: 20px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 32px;
+  line-height: 1.5;
+}
+
+
+
+
+
+
+
+
+h1 {
+        color: green;
+    }
+           
+    /* toggle in label designing */
+    .toggle {
+        position : relative ;
+        display : inline-block;
+        width : 100px;
+        height : 52px;
+        background-color: red;
+        border-radius: 30px;
+        border: 2px solid gray;
+    }
+           
+    /* After slide changes */
+    .toggle:after {
+        content: '';
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: whitesmoke;
+        top: 1px;
+        left: 1px;
+        transition:  all 0.5s;
+    }
+           
+    /* Toggle text */
+    p {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+    }
+           
+    /* Checkbox checked effect */
+    .checkbox:checked + .toggle::after {
+        left : 49px;
+    }
+           
+    /* Checkbox checked toggle label bg color */
+    .checkbox:checked + .toggle {
+        background-color: green;
+    }
+           
+    /* Checkbox vanished */
+    .checkbox {
+        display : none;
+    }
+
+
+    .container_grey {
+  background-color: whitesmoke;
+  border-radius: 10px;
+  border: 1px solid gray;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tag-pill {
+    background: linear-gradient(to bottom, #00b7ff, #0099ff);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-right: 5px;
+    height: 20px;
+    min-width: 60px;
+    display: inline-block;
+    font-size: 15px;
+    text-align: center;
+}
+
+
+
+
+
+</style>
+<div>
+
+  <div class="header">
+
+    <button class="submit-button">Submit</button>
+<label class="save-checkbox-label">
+  <input type="checkbox" class="save-checkbox">
+  Return blank labels
+</label>
+
+
+  </div>
+
+  <div class="box">
+    <h1>Important Stats</h1>
+    <h1>And more stats</h1>
+
+  </div>
+  
+  {% for input in inputs %}
+  <div class="message">
+      <div class="left-container">
+          <div class="container_grey">
+            <div class="greytext">
+              {{ input }}
+            </div>
+            <div class="greytags">
+              {% for tags in tags_list[loop.index0] %}
+                  <div class="tag-pill">{{ tags }}</div>
+              {% endfor %}
+            </div>
+              
+          </div>
+          <label for="label-selector">Label:</label>
+          <input id = 'label' class="round label-input" type="text" id="label-selector" list="label-options" onchange="storeLabel(this.value)">
+          <datalist id="label-options"></datalist>
+      </div>
+      <div class="right-container">
+          <input type="checkbox" id="switch{{ loop.index }}" checked class="checkbox" />
+          <label for="switch{{ loop.index }}" class="toggle">
+  </div>
+  </div>
+{% endfor %}
+
+
+  
+
+
+<style>
+  /*make it sticky*/
+  .header {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    height: 90px;
+  }
+
+  .submit-button {
+  background: linear-gradient(to bottom, #00b7ff, #0099ff);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  right: 20px;
+  position: absolute;
+  height: 50px;
+  width: 80px;
+}
+
+.submit-button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.save-checkbox-label {
+  
+  display: inline-block;
+  margin-left: 10px;
+  color: #0099ff;
+}
+
+.save-checkbox {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  border: 2px solid #0099ff;
+  margin-right: 5px;
+  cursor: pointer;
+  right: 0;
+}
+
+.save-checkbox:checked {
+  background: linear-gradient(to bottom, #00b7ff, #0099ff);
+}
+
+
+  .box {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  background-color: #eee;
+  transition: width 0.5s, height 0.5s;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  
+}
+  
+
+.box:hover {
+  width: 1000px;
+  height: 600px;
+  border: 2px solid gray;
+  /*move to the left and up*/
+  
+
+}
+</style>
+
+<script>
+
+
+
+
+let training_id = '{{ training_id }}';
+function storeLabel(label) {
+  //add a new label to local storage
+
+  //get the number of labels
+  const numLabels = localStorage.length;
+  //check if the label is already stored
+  for (let i = 0; i < numLabels; i++) {
+    const key = localStorage.key(i);
+    const value = localStorage.getItem(key);
+    if (value === label) {
+      if (key.startsWith("label_" + training_id)) {
+        //the label is already stored
+        return;
+      }
+    }
+  }
+  const newKey = "label_" + training_id+ numLabels;
+  //store the label
+  localStorage.setItem(newKey, label);
+  console.log("stored label: " + label);
+  refreshLabelSelector();
+}
+
+function refreshLabelSelector() {
+  const labelSelector = document.getElementById("label-options");
+  labelSelector.innerHTML = "";
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    const value = localStorage.getItem(key);
+    if (key.startsWith("label_" + training_id)) {
+      const option = document.createElement("option");
+      option.value = value;
+      //make the css on the label selector look nice
+      labelSelector.appendChild(option);
+    }
+  }
+}
+
+
+
+
+//labels is a list of strings being passed from the python script via jinja2 load them and console.log them
+let labels = [];
+{% for label in labels %}
+labels.push("{{ label|safe }}");
+{% endfor %}
+
+
+let classes = []
+{% for class in classes %}
+classes.push("{{ class|safe }}");
+{% endfor %}
+
+// loop throug hclasses and if the str is True then change it to true, and if it is False then change it to false
+for (let i = 0; i < classes.length; i++) {
+  if (classes[i] == "True") {
+    classes[i] = true;
+  } else {
+    classes[i] = false;
+  }
+}
+
+console.log(labels);
+console.log(classes);
+
+// write the labels in the labels list to local storage
+for (let i = 0; i < labels.length; i++) {
+  storeLabel(labels[i]);
+}
+//write them in the input with id = label at the ith index
+for (let i = 0; i < labels.length; i++) {
+  console.log(labels[i]);
+  document.getElementsByClassName("label-input")[i].value = labels[i];
+
+}
+
+//make a fn that does the same thing for classes
+for (let i = 0; i < classes.length; i++) {
+  document.getElementsByClassName("checkbox")[i].checked = classes[i];
+}
+
+
+
+
+//add a slight paper grey behind the text in the left container
+
+
+refreshLabelSelector();
+
+//when the button is clicked, replace it with a loading animation
+
+$(".submit-button").click(function() {
+
+
+  var classifications = document.querySelectorAll(".checkbox");
+  var labels = document.querySelectorAll("#label");
+  //check if the box that says save label is checked
+  var saveLabel = document.getElementsByClassName("save-checkbox")[0].checked;
+  //if it is checked then skip the next part
+  if (!saveLabel){
+  for (var i = 0; i < labels.length; i++) {
+    // if a checkbox is checked, but the label is empty, alert the user
+    if (classifications[i].checked && labels[i].value === "") {
+      alert("Please enter a label for your positive example. You are missing a label for the " + (i + 1) + "th example." );
+      return;
+    }
+  }
+}
+  $(this).html('<i class="fa fa-spinner fa-spin"></i> Loading');
+
+  var labelValues = [];
+  for (var i = 0; i < labels.length; i++) {
+    labelValues.push(labels[i].value);
+  }
+
+  let messages = document.querySelectorAll(".greytext");
+  let messageValues = [];
+  for (let i = 0; i < messages.length; i++) {
+    let text =messages[i].innerText;
+    //remove '\n Label:'
+    // text = text.replace('\nLabel: ', '');
+    messageValues.push(text);
+  }
+
+
+
+  //get all of the toggle values
+  var classifications = document.querySelectorAll(".checkbox");
+  var classificationValues = [];
+  for (var i = 0; i < classifications.length; i++) {
+    classificationValues.push(classifications[i].checked);
+  }
+
+  console.log(labelValues);
+  console.log(messageValues);
+  console.log(classificationValues);
+
+  //send the data to the server
+  $.ajax({
+    type: "POST",
+    url: "/send_labels",
+    contentType: "application/json",
+    data: JSON.stringify({
+    labelValues: labelValues,
+    messageValues: messageValues,
+    classificationValues: classificationValues
+  }),
+    success: function(data) {
+      console.log(data);
+      //replace the loading animation with a checkmark
+      $(".submit-button").html('<i class="fa fa-check"></i> Saved');
+      //wait 1 second and then change the button back to normal
+      setTimeout(function() {
+        $(".submit-button").html("Save");
+      }, 1000);
+    }
+  });
+
+});
+
+
+</script>
