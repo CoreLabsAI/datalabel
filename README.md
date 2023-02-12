@@ -19,7 +19,7 @@ Once datalabel is installed, you can start using it right away. Simply import da
 ```
 import datalabel
 
-texts = <your list of strings>
+texts = ['hi', 'hello', 'this is test data to label']
 datalabel.label(texts)
 ```
 
