@@ -1,6 +1,6 @@
 # DataLabel - Data Editing Made Easy
 
-[![Build Status](https://travis-ci.org/TitanLabsAI/datalabel.svg?branch=main)]https://travis-ci.org/TitanLabsAI/datalabel.svg?branch=main)
+[![Build Status](https://travis-ci.org/TitanLabsAI/datalabel.svg?branch=main)](https://travis-ci.org/<user>/<repo>)
 
 DataLabel is a UI-based data editing tool that makes it easy to create labeled text data in a dataframe. With DataLabel, you can quickly and effortlessly edit your data without having to write any code. Its intuitive interface makes it ideal for both experienced data professionals and those new to data editing.
 
