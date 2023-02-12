@@ -4,7 +4,7 @@
 
 DataLabel is a UI-based data editing tool that makes it easy to create labeled text data in a dataframe. With DataLabel, you can quickly and effortlessly edit your data without having to write any code. Its intuitive interface makes it ideal for both experienced data professionals and those new to data editing.
 
-![](https://im3.ezgif.com/tmp/ezgif-3-f24e6e325d.gif)
+![](https://s3.gifyu.com/images/ezgif.com-resize5bbffcbc6fa9ab02.gif)
 ## Installation
 
 DataLabel can be installed via pip:
