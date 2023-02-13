@@ -43,7 +43,6 @@ PORTNUM = 8080
 class LabelService:
     """
     msgs = ['hello', 'hi', 'how are you']
-    from EliseAI.labs.UI import LabelService
     ls = LabelService()
     df = ls.label(msgs)
 """
